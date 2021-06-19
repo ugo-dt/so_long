@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:07:12 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/18 14:46:57 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 21:07:22 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 # define UTILS_H
 
 # include <stdlib.h>
-# include "libft.h"
+
+# ifdef LINUX
+#  include "../../libft/libft.h"
+# else
+#  include "libft.h"
+# endif
 
 typedef struct s_str
 {

@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:43:44 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 20:36:01 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 22:30:11 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,24 @@ void	draw_texture(t_game *game, t_texture *tex, t_pos *cell)
 	}
 }
 
-static void	draw_collectible(t_game *game, t_pos *pos, t_pos *start)
-{
-	int		nb;
-
-	nb = get_collectible_number(game, pos);
-	if (nb >= 0)
-		if (game->config.collectibles[nb].pos.x != -1)
-			draw_texture(game, &game->tex[2], start);
-}
-
 static void	draw_cell(t_game *game, int region, t_pos *pos)
 {
 	t_pos	start;
 
 	set_pos(&start,
 		pos->y * game->config.cell_size, pos->x * game->config.cell_size);
-	draw_texture(game, &game->tex[1], &start);
 	if (game->config.regions[region]->region[pos->x][pos->y] == MAP_WALL)
 		draw_texture(game, &game->tex[0], &start);
 	else if (game->config.regions[region]->region[pos->x][pos->y] == COLLEC)
-		draw_collectible(game, pos, &start);
+		draw_texture(game, &game->tex[2], &start);
 	else if (game->config.regions[region]->region[pos->x][pos->y] == MAP_EXIT
 		&& game->collected < game->config.to_collect)
 		draw_texture(game, &game->tex[3], &start);
 	else if (game->config.regions[region]->region[pos->x][pos->y] == MAP_EXIT
 		&& game->collected >= game->config.to_collect)
 		draw_texture(game, &game->tex[4], &start);
+	else
+		draw_texture(game, &game->tex[1], &start);
 }
 
 void	draw_region(t_game *game, int region)

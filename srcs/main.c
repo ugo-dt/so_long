@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 15:11:25 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 16:39:46 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 21:38:13 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,5 @@ int	main(int argc, const char **argv)
 	game.window.screen.img = NULL;
 	check_arguments(&game, argc, argv);
 	launch_game(&game);
-	mlx_hook(game.window.window, 2, 0, &key_press, &game);
-	mlx_hook(game.window.window, 17, 0, &exit_hook, &game);
-	mlx_loop_hook(game.window.mlx_ptr, &main_loop, &game);
-	mlx_loop(game.window.mlx_ptr);
 	return (0);
 }

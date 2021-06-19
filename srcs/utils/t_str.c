@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:02:33 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/14 19:27:56 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 21:07:46 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_str	*t_str_split(const char *str, const char sep)
 			if (i - start > 0
 				&& !t_str_add_back(
 					&dest, ft_substr((char *)str, start, i - start)))
-				return ((void *)((uintptr_t)(t_str_clear(&dest))));
+				return ((void *)((unsigned long)(t_str_clear(&dest))));
 			i++;
 			start = i;
 		}
@@ -98,6 +98,6 @@ t_str	*t_str_split(const char *str, const char sep)
 	}
 	if (i - start > 0
 		&& !t_str_add_back(&dest, ft_substr((char *)str, start, i - start)))
-		return ((void *)((uintptr_t)(t_str_clear(&dest))));
+		return ((void *)((unsigned long)(t_str_clear(&dest))));
 	return (dest);
 }

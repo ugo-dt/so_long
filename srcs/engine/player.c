@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:40:00 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 20:40:59 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 21:37:41 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ void	move_player(t_game *game, int key)
 	if (key == KEY_D && temp.y + 1 < game->config.columns)
 		if (game->config.map[temp.x][temp.y + 1] != '1')
 			set_pos(player, temp.x, temp.y + 1);
-	if (player->x != temp.x	|| player->y != temp.y)
+	if (player->x != temp.x | player->y != temp.y)
 		ft_printf("Movements: %d\n", ++game->movements);
 	pick_collectible(game);
 	check_exit(game);
-	game->config.map[temp.x][temp.y] = MAP_FLOOR;
-	game->config.map[player->x][player->y] = PLAYER;
+	if (game->config.map[temp.x][temp.y] == PLAYER)
+		game->config.map[temp.x][temp.y] = MAP_FLOOR;
+	if (game->config.map[player->x][player->y] == MAP_FLOOR)
+		game->config.map[player->x][player->y] = PLAYER;
 }

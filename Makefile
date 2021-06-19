@@ -6,7 +6,7 @@
 #    By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/08 14:35:57 by ugdaniel          #+#    #+#              #
-#    Updated: 2021/06/19 08:47:42 by ugdaniel         ###   ########.fr        #
+#    Updated: 2021/06/19 21:24:08 by ugdaniel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,25 @@ SRCS = $(wildcard srcs/*.c srcs/*/*.c)
 OBJS = $(SRCS:.c=.o)
 
 CC = @clang
-FLAGS = -Wall -Wextra -Werror -fsanitize=address
-HEADERS = -I srcs/ -I mlx -I libft
+FLAGS = -Wall -Wextra -Werror
+HEADERS = -I srcs/ -I mlx -I libft -I. 
 
 LIBFT = libft/libft.a
 LIBFT_PATH = libft/
+LIBS = $(LIBFT) -lm -Imlx
 
-MLX = mlx/libmlx.a
-MLX_PATH = mlx/
-LIBS = $(MLX) $(LIBFT) -lm -framework OpenGL -framework AppKit -I. -Imlx
+ifeq ($(OSTYPE),Linux)
+	MLX_PATH = mlx-linux/
+	MLX = $(MLX_PATH)libmlx.a
+	LIBS += $(MLX) -L mlx-linux -lXext -lX11
+	HEADERS += -I mlx/mlx.h
+	FLAGS += -DLINUX
+else
+	MLX_PATH = mlx-osx/
+	MLX = $(MLX_PATH)libmlx.a
+	LIBS += $(MLX) -framework OpenGL -framework AppKit
+endif
+
 
 white = \033[39m
 green = \033[92m
@@ -55,7 +65,7 @@ $(NAME): $(MLX) $(LIBFT) $(OBJS)
 
 $(MLX):
 	@echo "$(gray)Compiling MiniLibX... \c"
-	@make -s -C mlx
+	@make -s -C $(MLX_PATH)
 	@echo "$(cyan)OK!\n"
 	clear
 	@echo "$(yellow)MiniLibX compiled"

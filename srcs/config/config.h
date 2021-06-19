@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:08:58 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 20:28:08 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 21:03:13 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 
 # include <unistd.h>
 # include <fcntl.h>
-# include "utils/utils.h"
-# include "gnl/get_next_line.h"
+
+# ifdef LINUX
+#  include "../utils/utils.h"
+#  include "../gnl/get_next_line.h"
+# else
+#  include "utils/utils.h"
+#  include "gnl/get_next_line.h"
+# endif
 
 # define MAP_CHARACTERS "01CEP"
 # define POSITIONS		"CEP"

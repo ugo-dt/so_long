@@ -6,15 +6,20 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:00:55 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 20:35:18 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 21:22:53 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENGINE_H
 # define ENGINE_H
 
-# include "mlx.h"
-# include "config/config.h"
+# ifdef LINUX
+#  include "../../mlx-linux/mlx.h"
+#  include "../config/config.h"
+# else
+#  include "mlx.h"
+#  include "config/config.h"
+# endif
 
 # define RED	0xff0000
 # define GREEN	0x00a600
@@ -24,16 +29,21 @@
 # define GRAY	0x3b3b3b
 # define YELLOW	0xfffb00
 
-# define KEY_W		6
-# define KEY_A		12
-# define KEY_S		1
-# define KEY_D		2
-# define KEY_M		41
-# define KEY_ESC	53
-# define KEY_LEFT	123
-# define KEY_RIGHT	124
-# define KEY_DOWN	125
-# define KEY_UP		126
+# ifdef LINUX
+#  define KEY_W		119
+#  define KEY_A		97
+#  define KEY_S		115
+#  define KEY_D		100
+#  define KEY_M		109
+#  define KEY_ESC	65307
+# else
+#  define KEY_W		6
+#  define KEY_A		12
+#  define KEY_S		1
+#  define KEY_D		2
+#  define KEY_M		41
+#  define KEY_ESC	53
+# endif
 
 typedef struct s_image
 {

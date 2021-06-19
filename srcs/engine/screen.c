@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:01:29 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 20:36:54 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 21:54:10 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ static void	draw_map(t_game *game)
 	if (!game->tex[2].tex)
 		draw_collectibles(game, region);
 	if (!game->tex[3].tex || !game->tex[4].tex)
-		draw_collectibles(game, region);
-	if (!game->tex[4].tex)
 		draw_exit(game, region);
 	if (!game->tex[5].tex)
 		draw_element(game, &game->config.player_pos, RED);
 	else
 	{
+		copy_pos(&temp, &game->config.player_pos);
+		pos_in_window(&temp);
 		set_pos(&temp,
-			game->config.player_pos.y * game->config.cell_size,
-			game->config.player_pos.x * game->config.cell_size);
+			temp.y * game->config.cell_size,
+			temp.x * game->config.cell_size);
 		draw_texture(game, &game->tex[5], &temp);
 	}
 }
