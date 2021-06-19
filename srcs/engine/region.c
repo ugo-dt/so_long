@@ -6,11 +6,12 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:43:44 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 19:02:24 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:36:01 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine.h"
+#define COLLEC COLLECTIBLE
 
 int	get_region_to_draw(t_pos *player_pos, t_region **regions, int max)
 {
@@ -29,7 +30,7 @@ int	get_region_to_draw(t_pos *player_pos, t_region **regions, int max)
 	return (0);
 }
 
-static void	draw_texture(t_game *game, t_texture *tex, t_pos *cell)
+void	draw_texture(t_game *game, t_texture *tex, t_pos *cell)
 {
 	int		i;
 	int		j;
@@ -54,36 +55,48 @@ static void	draw_texture(t_game *game, t_texture *tex, t_pos *cell)
 	}
 }
 
-static void	draw_cell(t_game *game, int region, int i, int j)
+static void	draw_collectible(t_game *game, t_pos *pos, t_pos *start)
+{
+	int		nb;
+
+	nb = get_collectible_number(game, pos);
+	if (nb >= 0)
+		if (game->config.collectibles[nb].pos.x != -1)
+			draw_texture(game, &game->tex[2], start);
+}
+
+static void	draw_cell(t_game *game, int region, t_pos *pos)
 {
 	t_pos	start;
-	t_pos	end;
 
 	set_pos(&start,
-		j * game->config.cell_size, i * game->config.cell_size);
-	set_pos(&end,
-		start.x + game->config.cell_size - 1,
-		start.y + game->config.cell_size - 1);
-	if (game->config.regions[region]->region[i][j] == MAP_WALL)
+		pos->y * game->config.cell_size, pos->x * game->config.cell_size);
+	draw_texture(game, &game->tex[1], &start);
+	if (game->config.regions[region]->region[pos->x][pos->y] == MAP_WALL)
 		draw_texture(game, &game->tex[0], &start);
-	else
-		draw_texture(game, &game->tex[1], &start);
+	else if (game->config.regions[region]->region[pos->x][pos->y] == COLLEC)
+		draw_collectible(game, pos, &start);
+	else if (game->config.regions[region]->region[pos->x][pos->y] == MAP_EXIT
+		&& game->collected < game->config.to_collect)
+		draw_texture(game, &game->tex[3], &start);
+	else if (game->config.regions[region]->region[pos->x][pos->y] == MAP_EXIT
+		&& game->collected >= game->config.to_collect)
+		draw_texture(game, &game->tex[4], &start);
 }
 
 void	draw_region(t_game *game, int region)
 {
-	int		i;
-	int		j;
+	t_pos	pos;
 
-	i = 0;
-	while (i < game->config.regions[region]->rows)
+	pos.x = 0;
+	while (pos.x < game->config.regions[region]->rows)
 	{
-		j = 0;
-		while (j < game->config.regions[region]->cols)
+		pos.y = 0;
+		while (pos.y < game->config.regions[region]->cols)
 		{
-			draw_cell(game, region, i, j);
-			j++;
+			draw_cell(game, region, &pos);
+			pos.y++;
 		}
-		i++;
+		pos.x++;
 	}
 }

@@ -6,14 +6,14 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:56:08 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 18:39:47 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:03:55 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine.h"
 #include "so_long.h"
 
-static void	check_exit(t_game *game)
+void	check_exit(t_game *game)
 {
 	t_pos	player;
 
@@ -45,7 +45,6 @@ void	draw_exit(t_game *game, int region)
 	int		i;
 	t_pos	exit;
 
-	check_exit(game);
 	i = 0;
 	while (i < game->config.nb_exits)
 	{

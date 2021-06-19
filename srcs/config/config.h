@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:08:58 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 17:53:12 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:28:08 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,20 @@
 # define PLAYER			'P'
 # define MAP_EXIT		'E'
 
-# define TEXTURES		2
-# define TEX_WALL		0
-# define TEX_FLOOR		1
+# define TEXTURES			6
+# define TEX_WALL			0
+# define TEX_FLOOR			1
+# define TEX_COLLECTIBLE	2
+# define TEX_EXIT_CLOSED	3
+# define TEX_EXIT_OPENED	4
+# define TEX_PLAYER			5
 
-# define TEX_WALL_PATH	"data/wall.xpm"
-# define TEX_FLOOR_PATH	"data/floor.xpm"
+# define TEX_WALL_PATH			"data/wall.xpm"
+# define TEX_FLOOR_PATH			"data/floor.xpm"
+# define TEX_COLLECTIBLE_PATH	"data/key.xpm"
+# define TEX_EXIT_CLOSED_PATH	"data/closed_door.xpm"
+# define TEX_EXIT_OPENED_PATH	"data/opened_door.xpm"
+# define TEX_PLAYER_PATH		"data/character.xpm"
 
 # define FLAG_UPDATE	0x00000001
 # define FLAG_UI		0x00000010

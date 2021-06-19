@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:10:27 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 17:53:31 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:28:42 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	init_game(t_game *game)
 	int		i;
 
 	i = 0;
+	mlx_mouse_hide();
 	while (i < TEXTURES)
 	{
 		game->tex[i].tex = NULL;
 		game->tex[i].ptr = NULL;
 		i++;
 	}
-	mlx_mouse_hide();
 	game->keys.key_w = 0;
 	game->keys.key_a = 0;
 	game->keys.key_s = 0;
@@ -41,6 +41,10 @@ void	init_game(t_game *game)
 	game->collected = 0;
 	game->config.tex_path[0] = ft_strdup(TEX_WALL_PATH);
 	game->config.tex_path[1] = ft_strdup(TEX_FLOOR_PATH);
+	game->config.tex_path[2] = ft_strdup(TEX_COLLECTIBLE_PATH);
+	game->config.tex_path[3] = ft_strdup(TEX_EXIT_CLOSED_PATH);
+	game->config.tex_path[4] = ft_strdup(TEX_EXIT_OPENED_PATH);
+	game->config.tex_path[5] = ft_strdup(TEX_PLAYER_PATH);
 }
 
 int	launch_game(t_game *game)

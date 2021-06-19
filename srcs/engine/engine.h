@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:00:55 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 17:27:06 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:35:18 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,14 @@ void	draw_hud(t_game *game, t_window *w, t_config *c);
 
 int		get_region_to_draw(t_pos *player_pos, t_region **regions, int max);
 void	draw_region(t_game *game, int region);
+void	draw_texture(t_game *game, t_texture *tex, t_pos *cell);
 
 void	draw_collectibles(t_game *game, int region);
+void	pick_collectible(t_game *game);
+int		get_collectible_number(t_game *game, t_pos *pos);
 
 void	draw_exit(t_game *game, int region);
+void	check_exit(t_game *game);
 
 int		load_textures(t_game *game);
 void	clear_textures(t_game *game);

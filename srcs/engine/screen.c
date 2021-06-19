@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 21:01:29 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 09:12:06 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/19 20:36:54 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	draw_element(t_game *game, t_pos *pos, int color)
 
 static void	draw_map(t_game *game)
 {
+	t_pos	temp;
 	int		region;
 
 	region = get_region_to_draw(
@@ -38,8 +39,21 @@ static void	draw_map(t_game *game)
 			game->config.regions,
 			game->config.nb_regions);
 	draw_region(game, region);
-	draw_collectibles(game, region);
-	draw_exit(game, region);
+	if (!game->tex[2].tex)
+		draw_collectibles(game, region);
+	if (!game->tex[3].tex || !game->tex[4].tex)
+		draw_collectibles(game, region);
+	if (!game->tex[4].tex)
+		draw_exit(game, region);
+	if (!game->tex[5].tex)
+		draw_element(game, &game->config.player_pos, RED);
+	else
+	{
+		set_pos(&temp,
+			game->config.player_pos.y * game->config.cell_size,
+			game->config.player_pos.x * game->config.cell_size);
+		draw_texture(game, &game->tex[5], &temp);
+	}
 }
 
 void	update_screen(t_game *game)
@@ -49,7 +63,6 @@ void	update_screen(t_game *game)
 	set_pos(&start, 0, 0);
 	draw_rectangle(&game->window, &start, &game->window.size, BLACK);
 	draw_map(game);
-	draw_element(game, &game->config.player_pos, RED);
 	if (game->config.flags & FLAG_UI)
 		draw_minimap(game, &game->window);
 }
