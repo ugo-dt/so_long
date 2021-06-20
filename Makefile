@@ -6,7 +6,7 @@
 #    By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/08 14:35:57 by ugdaniel          #+#    #+#              #
-#    Updated: 2021/06/19 22:35:11 by ugdaniel         ###   ########.fr        #
+#    Updated: 2021/06/20 11:13:13 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,14 +49,15 @@ red = \033[91m
 blue = \033[94m
 
 all: $(NAME)
+	@echo "$(green)So_long ready!"
 
 bonus: $(NAME)
+	@echo "$(green)So_long ready!"
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@echo "$(yellow)Source files compiled"
 	@echo "$(red)\c"
 	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(LIBS)
-	@echo "$(green)So_long ready!"
 
 .c.o:
 	@echo "$(gray)Compiling $<... \c"
@@ -80,12 +81,10 @@ $(LIBFT):
 
 clean_libft:
 	@echo "$(gray)Cleaning Libft"
-	@echo "$(red)\c"
 	@make -s clean -C $(LIBFT_PATH)
 
 clean_mlx:
 	@echo "$(gray)Cleaning MiniLibX"
-	@echo "$(red)\c"
 	@make -s clean -C $(MLX_PATH)
 
 fclean_mlx: clean_mlx
@@ -113,11 +112,11 @@ fclean: fclean_mlx fclean_libft fclean_exec
 
 re_nolib: fclean_exec newline all
 
-re: fclean newline all
+re: fclean newline all clean_objs
 
 bonus:
 
 newline:
 	@echo ""
 
-.PHONY: all clean_libft clean_objs clean fclean_exec fclean_libft fclean re_nolib re test
+.PHONY: all clean_libft clean_objs clean fclean_exec fclean_libft fclean re_nolib re
