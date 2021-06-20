@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 15:11:25 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 21:38:13 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/20 10:59:41 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	check_arguments(t_game *game, int argc, const char **argv)
 
 	if (argc < 2)
 		clear_and_exit(game, "So_long: no map specified\n");
-	else if (argc > 3)
+	else if (argc > 2)
 		clear_and_exit(game, "So_long: expected 1 argument\n");
 	else if (!check_extension(argv[1], ".ber"))
 		clear_and_exit(game, "So_long: expected .ber file\n");

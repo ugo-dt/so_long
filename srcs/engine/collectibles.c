@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:42:24 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 22:28:45 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/20 10:36:31 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,21 @@ int	get_collectible_number(t_game *game, t_pos *pos)
 void	pick_collectible(t_game *game)
 {
 	int		i;
+	int		region;
 	t_pos	player;
 
 	copy_pos(&player, &game->config.player_pos);
 	if (game->config.map[player.x][player.y] == COLLECTIBLE)
 	{
+		region = get_region_to_draw(
+				&player,
+				game->config.regions,
+				game->config.nb_regions);
 		game->config.map[player.x][player.y] = MAP_FLOOR;
+		pos_in_window(&player);
+		game->config.regions[region]->region[player.x][player.y] = MAP_FLOOR;
 		i = get_collectible_number(game, &player);
-		if (i > -1)
-		{
-			game->collected++;
-			set_pos(&game->config.collectibles[i].pos, -1, -1);
-		}
+		game->collected++;
 	}
 }
 

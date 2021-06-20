@@ -6,7 +6,7 @@
 #    By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/08 14:35:57 by ugdaniel          #+#    #+#              #
-#    Updated: 2021/06/19 21:24:08 by ugdaniel         ###   ########.fr        #
+#    Updated: 2021/06/19 22:35:11 by ugdaniel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,13 @@ ifeq ($(OSTYPE),Linux)
 	MLX_PATH = mlx-linux/
 	MLX = $(MLX_PATH)libmlx.a
 	LIBS += $(MLX) -L mlx-linux -lXext -lX11
-	HEADERS += -I mlx/mlx.h
+	HEADERS += -I mlx-linux
 	FLAGS += -DLINUX
 else
 	MLX_PATH = mlx-osx/
 	MLX = $(MLX_PATH)libmlx.a
 	LIBS += $(MLX) -framework OpenGL -framework AppKit
+	HEADERS += -I mlx-osx
 endif
 
 

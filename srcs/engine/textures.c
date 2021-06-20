@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 09:35:27 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 21:26:32 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/20 10:59:02 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	clear_textures(t_game *game)
 	{
 		if (game->tex[i].tex)
 			mlx_destroy_image(game->window.mlx_ptr, game->tex[i].tex);
-		if (game->tex[i].path)
-			free(game->tex[i].path);
 		game->tex[i].tex = NULL;
 		game->tex[i].ptr = NULL;
 		i++;

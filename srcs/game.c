@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:10:27 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 21:43:28 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/20 10:59:05 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_game(t_game *game)
 	{
 		game->tex[i].tex = NULL;
 		game->tex[i].ptr = NULL;
+		game->config.tex_path[i] = NULL;
 		i++;
 	}
 	game->keys.key_w = 0;
