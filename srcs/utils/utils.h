@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:07:12 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 21:07:22 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/20 11:50:26 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_pos
 void	set_pos(t_pos *pos, double x, double y);
 void	copy_pos(t_pos *pos_to, t_pos *pos_from);
 void	pos_in_window(t_pos *pos);
+void	restrain_pos(t_pos *pos, t_pos *win_size);
 
 int		char_in_str(char c, const char *s);
 int		check_extension(const char *s, const char *end);

@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:50:17 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 19:01:11 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/20 12:01:59 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,30 @@ static int	cell_color(t_game *game, int x, int y)
 	return (WHITE);
 }
 
-void	draw_hud(t_game *game, t_window *w, t_config *c)
+void	draw_hud(t_game *g, t_window *w, t_config *c)
 {
 	static int	x = 88;
 	static int	x2 = 0;
 	t_pos		pos;
 
 	set_pos(&pos, 5, 15);
-	mlx_string_put(w->mlx_ptr, w->window, pos.x, pos.y, RED, "Remaining: ");
+	mlx_string_put(w->mlx_ptr, w->window, pos.x, pos.y, WHITE, "Remaining: ");
 	set_pos(&pos, 77, 15);
 	mlx_string_put(w->mlx_ptr, w->window, pos.x, pos.y,
-		RED, ft_itoa(c->to_collect - game->collected));
-	if ((game->movements >= 100 && x < 95)
-		|| (game->movements >= 1000 && x < 102))
+		WHITE, ft_itoa(c->to_collect - g->collected));
+	if ((g->movements >= 100 && x < 95) || (g->movements >= 1000 && x < 102))
 	{
 		x += 7;
 		x2 += 7;
 	}
 	set_pos(&pos, w->size.x - x, 15);
-	mlx_string_put(w->mlx_ptr, w->window, pos.x, pos.y, RED, "Movements: ");
-	if (game->movements >= 10)
+	mlx_string_put(w->mlx_ptr, w->window, pos.x, pos.y, WHITE, "Movements: ");
+	if (g->movements >= 10)
 		set_pos(&pos, w->size.x - 16 - x2, 15);
 	else
 		set_pos(&pos, w->size.x - 11 - x2, 15);
 	mlx_string_put(w->mlx_ptr, w->window, pos.x, pos.y,
-		RED, ft_itoa(game->movements));
+		WHITE, ft_itoa(g->movements));
 }
 
 void	draw_minimap(t_game *game, t_window *w)
