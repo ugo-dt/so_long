@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 14:42:28 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/14 13:23:11 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/22 18:34:31 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	get_next_line(int fd, char **line)
 			return (-1);
 		}
 		buffer[nb_read] = '\0';
-		str[fd] = ft_strjoin(str[fd], buffer);
+		str[fd] = strjoin(str[fd], buffer);
 	}
 	free(buffer);
 	*line = create_line(str[fd]);

@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:00:55 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 21:22:53 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/22 18:29:40 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ENGINE_H
 
 # ifdef LINUX
-#  include "../../mlx-linux/mlx.h"
+#  include "../../lib/mlx-linux/mlx.h"
 #  include "../config/config.h"
 # else
 #  include "mlx.h"

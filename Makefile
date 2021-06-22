@@ -6,7 +6,7 @@
 #    By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/08 14:35:57 by ugdaniel          #+#    #+#              #
-#    Updated: 2021/06/20 11:13:13 by user42           ###   ########.fr        #
+#    Updated: 2021/06/22 18:31:44 by ugdaniel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,23 +18,24 @@ OBJS = $(SRCS:.c=.o)
 
 CC = @clang
 FLAGS = -Wall -Wextra -Werror
-HEADERS = -I srcs/ -I mlx -I libft -I. 
 
-LIBFT = libft/libft.a
-LIBFT_PATH = libft/
+LIBFT_PATH = lib/libft/
+LIBFT = $(LIBFT_PATH)libft.a
 LIBS = $(LIBFT) -lm -Imlx
 
+HEADERS = -I srcs/ -I mlx -I $(LIBFT_PATH) -I. 
+
 ifeq ($(OSTYPE),Linux)
-	MLX_PATH = mlx-linux/
+	MLX_PATH = lib/mlx-linux/
 	MLX = $(MLX_PATH)libmlx.a
-	LIBS += $(MLX) -L mlx-linux -lXext -lX11
-	HEADERS += -I mlx-linux
+	LIBS += $(MLX) -L $(MLX_PATH) -lXext -lX11
+	HEADERS += -I lib/mlx-linux
 	FLAGS += -DLINUX
 else
-	MLX_PATH = mlx-osx/
+	MLX_PATH = lib/mlx-osx/
 	MLX = $(MLX_PATH)libmlx.a
 	LIBS += $(MLX) -framework OpenGL -framework AppKit
-	HEADERS += -I mlx-osx
+	HEADERS += -I $(MLX_PATH)
 endif
 
 

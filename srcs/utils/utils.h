@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:07:12 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/20 11:50:26 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/22 18:29:51 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 
 # ifdef LINUX
-#  include "../../libft/libft.h"
+#  include "../../lib/libft/libft.h"
 # else
 #  include "libft.h"
 # endif

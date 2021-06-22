@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 14:43:17 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/14 13:26:28 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/22 18:35:00 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	find_endl(char *s)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*strjoin(char *s1, char *s2)
 {
 	int		s1_len;
 	int		s2_len;
