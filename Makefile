@@ -6,7 +6,7 @@
 #    By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/08 14:35:57 by ugdaniel          #+#    #+#              #
-#    Updated: 2021/06/22 18:31:44 by ugdaniel         ###   ########.fr        #
+#    Updated: 2021/06/22 18:40:36 by ugdaniel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ else
 	HEADERS += -I $(MLX_PATH)
 endif
 
-
 white = \033[39m
 green = \033[92m
 cyan = \033[96m
@@ -51,9 +50,11 @@ blue = \033[94m
 
 all: $(NAME)
 	@echo "$(green)So_long ready!"
+	@echo "$(white)\c"
 
 bonus: $(NAME)
 	@echo "$(green)So_long ready!"
+	@echo "$(white)\c"
 
 $(NAME): $(MLX) $(LIBFT) $(OBJS)
 	@echo "$(yellow)Source files compiled"
