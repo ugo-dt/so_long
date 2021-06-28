@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:00:55 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/28 14:41:42 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:48:25 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define WHITE	0xf0f0f0
 # define BLACK	0x000000
 # define GRAY	0x3b3b3b
-# define YELLOW	0xfffb00
+# define YELLOW	0xd1db00
 
 # ifdef LINUX
 #  define KEY_W		119
@@ -137,6 +137,9 @@ int		get_collectible_number(t_game *game, t_pos *pos);
 
 void	draw_exit(t_game *game, int region);
 void	check_exit(t_game *game);
+
+void	draw_enemy(t_game *game, int region);
+void	check_enemy(t_game *game);
 
 int		load_textures(t_game *game);
 void	clear_textures(t_game *game);

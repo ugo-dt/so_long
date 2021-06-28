@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:10:27 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/28 14:42:13 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:16:58 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	init_game(t_game *game)
 	game->config.tex_path[3] = ft_strdup(TEX_EXIT_CLOSED_PATH);
 	game->config.tex_path[4] = ft_strdup(TEX_EXIT_OPENED_PATH);
 	game->config.tex_path[5] = ft_strdup(TEX_PLAYER_PATH);
+	game->config.tex_path[6] = ft_strdup(TEX_KNIGHT_PATH);
 }
 
 #ifndef LINUX

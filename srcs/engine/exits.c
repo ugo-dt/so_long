@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 13:56:08 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 20:03:55 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:49:04 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_exit(t_game *game)
 	{
 		if (game->collected == game->config.to_collect)
 		{
-			ft_printf("Game over! You finished in %d moves.\n",
+			ft_printf("You win! You finished in %d moves.\n",
 				game->movements);
 			exit_game(game, EXIT_SUCCESS);
 		}

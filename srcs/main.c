@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 15:11:25 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/28 14:37:55 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:14:28 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,64 +18,6 @@ void	clear_and_exit(t_game *game, char *s)
 	if (s)
 		write(STDERR_FILENO, s, ft_strlen(s));
 	exit_game(game, EXIT_FAILURE);
-}
-
-static int	find_exits(t_config *config)
-{
-	int		i;
-	int		j;
-	int		k;
-
-	config->exits = malloc(sizeof(t_element) * config->nb_exits);
-	if (!config->exits)
-		return (0);
-	i = 0;
-	j = 0;
-	while (j < config->rows)
-	{
-		k = 0;
-		while (k < config->columns)
-		{
-			if (config->map[j][k] == MAP_EXIT && i < config->nb_exits)
-			{
-				set_pos(&config->exits[i].pos, j, k);
-				config->exits->number = i;
-				i++;
-			}
-			k++;
-		}
-		j++;
-	}
-	return (1);
-}
-
-static int	find_collectibles(t_config *config)
-{
-	int		i;
-	int		j;
-	int		k;
-
-	config->collectibles = malloc(sizeof(t_element) * config->to_collect);
-	if (!config->collectibles)
-		return (0);
-	i = 0;
-	j = 0;
-	while (j < config->rows)
-	{
-		k = 0;
-		while (k < config->columns)
-		{
-			if (config->map[j][k] == COLLECTIBLE && i < config->to_collect)
-			{
-				set_pos(&config->collectibles[i].pos, j, k);
-				config->collectibles->number = i;
-				i++;
-			}
-			k++;
-		}
-		j++;
-	}
-	return (1);
 }
 
 static void	check_arguments(t_game *game, int argc, const char **argv)
@@ -93,11 +35,12 @@ static void	check_arguments(t_game *game, int argc, const char **argv)
 		clear_and_exit(game, "So_long: could not read file\n");
 	if (!parse_config(&game->config, fd))
 		clear_and_exit(game, "So_long: invalid map\n");
-	if (!find_collectibles(&game->config))
+	if (!find_collectibles(&game->config) || !find_exits(&game->config))
 		clear_and_exit(game, "Please try again\n");
-	if (!find_exits(&game->config))
-		clear_and_exit(game, "Please try again\n");
-	if (game->config.to_collect < 1 || game->config.nb_exits < 1||
+	if (game->config.nb_enemies > 0)
+		if (!find_enemies(&game->config))
+			clear_and_exit(game, "Please try again\n");
+	if (game->config.to_collect < 1 || game->config.nb_exits < 1 ||
 		game->config.player_pos.x == -1 || game->config.player_pos.y == -1)
 		clear_and_exit(game, "So_long: map elements are missing\n");
 }

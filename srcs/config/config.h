@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:08:58 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 21:03:13 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:16:35 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,23 @@
 #  include "gnl/get_next_line.h"
 # endif
 
-# define MAP_CHARACTERS "01CEP"
-# define POSITIONS		"CEP"
+# define MAP_CHARACTERS "01CEPK"
+# define POSITIONS		"CEPK"
 # define MAP_WALL		'1'
 # define MAP_FLOOR		'0'
 # define COLLECTIBLE	'C'
 # define PLAYER			'P'
 # define MAP_EXIT		'E'
+# define MAP_KNIGHT		'K'
 
-# define TEXTURES			6
+# define TEXTURES			7
 # define TEX_WALL			0
 # define TEX_FLOOR			1
 # define TEX_COLLECTIBLE	2
 # define TEX_EXIT_CLOSED	3
 # define TEX_EXIT_OPENED	4
 # define TEX_PLAYER			5
+# define TEX_KNIGHT			6
 
 # define TEX_WALL_PATH			"data/wall.xpm"
 # define TEX_FLOOR_PATH			"data/floor.xpm"
@@ -46,9 +48,11 @@
 # define TEX_EXIT_CLOSED_PATH	"data/closed_door.xpm"
 # define TEX_EXIT_OPENED_PATH	"data/opened_door.xpm"
 # define TEX_PLAYER_PATH		"data/character.xpm"
+# define TEX_KNIGHT_PATH		"data/knight.xpm"
 
-# define FLAG_UPDATE	0x00000001
-# define FLAG_UI		0x00000010
+
+# define FLAG_UPDATE	0b1
+# define FLAG_UI		0b10
 
 typedef struct s_region
 {
@@ -81,6 +85,8 @@ typedef struct s_config
 	int				to_collect;
 	t_element		*exits;
 	int				nb_exits;
+	t_element		*enemies;
+	int				nb_enemies;
 	char			*tex_path[TEXTURES];
 	unsigned int	flags;
 }t_config;
@@ -100,5 +106,9 @@ void	positions_in_map(t_config *config, char element, int x, int y);
 void	define_regions(t_config *confi);
 
 void	init_textures(t_config *config);
+
+int		find_collectibles(t_config *config);
+int		find_enemies(t_config *config);
+int		find_exits(t_config *config);
 
 #endif

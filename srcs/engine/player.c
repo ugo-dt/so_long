@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:40:00 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 21:37:41 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:21:58 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	move_player(t_game *game, int key)
 		ft_printf("Movements: %d\n", ++game->movements);
 	pick_collectible(game);
 	check_exit(game);
+	check_enemy(game);
 	if (game->config.map[temp.x][temp.y] == PLAYER)
 		game->config.map[temp.x][temp.y] = MAP_FLOOR;
 	if (game->config.map[player->x][player->y] == MAP_FLOOR)

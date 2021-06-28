@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 10:56:13 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/28 14:38:00 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:13:09 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	clear_config(t_config *config)
 		free(config->exits);
 	if (config->collectibles)
 		free(config->collectibles);
+	if (config->enemies)
+		free(config->enemies);
 	return (0);
 }
 
@@ -53,6 +55,8 @@ void	init_config(t_config *config)
 	config->flags = FLAG_UPDATE;
 	config->nb_exits = 0;
 	config->exits = 0;
+	config->nb_enemies = 0;
+	config->enemies = 0;
 }
 
 static int	parse_line(t_config *config, char *line, t_str **map_buf)
@@ -70,6 +74,8 @@ static int	parse_line(t_config *config, char *line, t_str **map_buf)
 			config->to_collect++;
 		else if (line[i] == MAP_EXIT)
 			config->nb_exits++;
+		else if (line[i] == MAP_KNIGHT)
+			config->nb_enemies++;
 		i++;
 	}
 	return (!!t_str_add_back(map_buf, ft_strdup(line)));

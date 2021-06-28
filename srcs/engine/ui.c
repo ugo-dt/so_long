@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:50:17 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/20 12:01:59 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:46:46 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ static int	cell_color(t_game *game, int x, int y)
 	char	c;
 
 	if (x == game->config.player_pos.x && y == game->config.player_pos.y)
-		return (RED);
+		return (BLUE);
 	c = game->config.map[x][y];
 	if (c == MAP_WALL)
 		return (BLACK);
 	else if (c == MAP_EXIT)
 		return (GREEN);
 	else if (c == COLLECTIBLE)
-		return (BLUE);
+		return (YELLOW);
+	else if (c == MAP_KNIGHT)
+		return (RED);
 	return (WHITE);
 }
 
@@ -72,9 +74,7 @@ void	draw_minimap(t_game *game, t_window *w)
 			set_pos(&start,
 				w->size.x - (game->config.columns * 5) - 5 + (j * 5),
 				w->size.y - (game->config.rows * 5) - 5 + (i * 5));
-			set_pos(&end,
-				w->size.x - (game->config.columns * 5) + 5 + (j * 5),
-				w->size.y - (game->config.rows * 5) + 5 + (i * 5));
+			set_pos(&end, start.x + 5, start.y + 5);
 			draw_rectangle(w, &start, &end, color);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:43:44 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/19 22:30:11 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 15:19:21 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static void	draw_cell(t_game *game, int region, t_pos *pos)
 	else if (game->config.regions[region]->region[pos->x][pos->y] == MAP_EXIT
 		&& game->collected >= game->config.to_collect)
 		draw_texture(game, &game->tex[4], &start);
+	else if (game->config.regions[region]->region[pos->x][pos->y] == MAP_KNIGHT)
+		draw_texture(game, &game->tex[6], &start);
 	else
 		draw_texture(game, &game->tex[1], &start);
 }
