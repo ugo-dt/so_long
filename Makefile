@@ -6,7 +6,7 @@
 #    By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/08 14:35:57 by ugdaniel          #+#    #+#              #
-#    Updated: 2021/06/22 18:40:36 by ugdaniel         ###   ########.fr        #
+#    Updated: 2021/06/28 15:02:30 by ugdaniel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,10 +49,6 @@ red = \033[91m
 blue = \033[94m
 
 all: $(NAME)
-	@echo "$(green)So_long ready!"
-	@echo "$(white)\c"
-
-bonus: $(NAME)
 	@echo "$(green)So_long ready!"
 	@echo "$(white)\c"
 
@@ -115,8 +111,6 @@ fclean: fclean_mlx fclean_libft fclean_exec
 re_nolib: fclean_exec newline all
 
 re: fclean newline all clean_objs
-
-bonus:
 
 newline:
 	@echo ""
