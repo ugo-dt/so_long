@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 15:11:25 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/20 10:59:41 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:37:55 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ static void	check_arguments(t_game *game, int argc, const char **argv)
 		clear_and_exit(game, "Please try again\n");
 	if (!find_exits(&game->config))
 		clear_and_exit(game, "Please try again\n");
-	if (game->config.to_collect < 1 || game->config.player_pos.x == -1
-		|| game->config.player_pos.y == -1)
+	if (game->config.to_collect < 1 || game->config.nb_exits < 1||
+		game->config.player_pos.x == -1 || game->config.player_pos.y == -1)
 		clear_and_exit(game, "So_long: map elements are missing\n");
 }
 

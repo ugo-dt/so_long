@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:00:55 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/22 18:29:40 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:41:42 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef struct s_game
 int		init_window(t_window *window, t_config *config);
 int		init_image(t_window *window, t_image *img);
 void	clear_window(t_window *window);
-void	update_window(t_game *game);
+int		update_window(t_game *game);
 void	update_screen(t_game *game);
 
 int		draw_rectangle(t_window *window,

@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:10:27 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/20 10:59:05 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/06/28 14:42:13 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	launch_game(t_game *game)
 		clear_and_exit(game, "So_long: could not load textures\n");
 	mlx_hook(game->window.window, 2, (1L << 0), &key_press, game);
 	mlx_hook(game->window.window, 33, (1L << 17), &exit_hook, game);
+	mlx_hook(game->window.window, 9, (1L << 21), &update_window, game);
 	mlx_loop_hook(game->window.mlx_ptr, &main_loop, game);
 	mlx_loop(game->window.mlx_ptr);
 	return (1);
