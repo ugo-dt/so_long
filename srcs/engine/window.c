@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:18:12 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/28 14:41:34 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/07/05 19:32:02 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	clear_window(t_window *window)
 		mlx_destroy_window(window->mlx_ptr, window->window);
 }
 
-int		update_window(t_game *game)
+int	update_window(t_game *game)
 {
 	t_pos		p1;
 	t_pos		p2;

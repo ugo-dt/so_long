@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:08:58 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/28 15:16:35 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/07/05 19:28:24 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@
 # define TEX_EXIT_OPENED_PATH	"data/opened_door.xpm"
 # define TEX_PLAYER_PATH		"data/character.xpm"
 # define TEX_KNIGHT_PATH		"data/knight.xpm"
-
 
 # define FLAG_UPDATE	0b1
 # define FLAG_UI		0b10
