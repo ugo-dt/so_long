@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 16:00:55 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/06/28 15:48:25 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/07/06 10:05:09 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_game
 	t_texture	tex[TEXTURES];
 	int			movements;
 	int			collected;
+	int			fd;
 }t_game;
 
 int		init_window(t_window *window, t_config *config);

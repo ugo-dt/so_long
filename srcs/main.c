@@ -6,7 +6,7 @@
 /*   By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/12 15:11:25 by ugdaniel          #+#    #+#             */
-/*   Updated: 2021/07/05 19:28:07 by ugdaniel         ###   ########.fr       */
+/*   Updated: 2021/07/06 10:16:29 by ugdaniel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,42 @@
 
 void	clear_and_exit(t_game *game, char *s)
 {
+	close(game->fd);
 	write(1, "Error\n", 7);
 	if (s)
 		write(STDERR_FILENO, s, ft_strlen(s));
 	exit_game(game, EXIT_FAILURE);
 }
 
+static int	get_fd(t_game *game, const char *path)
+{
+	int		fd;
+
+	fd = open(path, O_DIRECTORY);
+	if (fd >= 0)
+	{
+		clear_and_exit(game, "So_long: did not expect a directory\n");
+		return (-1);
+	}
+	else
+	{
+		fd = open(path, O_RDONLY);
+		if (fd < 0)
+			clear_and_exit(game, "So_long: could not read file\n");
+	}
+	return (fd);
+}
+
 static void	check_arguments(t_game *game, int argc, const char **argv)
 {
-	int	fd;
-
 	if (argc < 2)
 		clear_and_exit(game, "So_long: no map specified\n");
 	else if (argc > 2)
 		clear_and_exit(game, "So_long: expected 1 argument\n");
 	else if (!check_extension(argv[1], ".ber"))
 		clear_and_exit(game, "So_long: expected .ber file\n");
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		clear_and_exit(game, "So_long: could not read file\n");
-	if (!parse_config(&game->config, fd))
+	game->fd = get_fd(game, argv[1]);
+	if (!parse_config(&game->config, game->fd))
 		clear_and_exit(game, "So_long: invalid map\n");
 	if (!find_collectibles(&game->config) || !find_exits(&game->config))
 		clear_and_exit(game, "Please try again\n");
