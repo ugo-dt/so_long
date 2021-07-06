@@ -6,7 +6,7 @@
 #    By: ugdaniel <ugdaniel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/08 14:35:57 by ugdaniel          #+#    #+#              #
-#    Updated: 2021/06/28 15:02:30 by ugdaniel         ###   ########.fr        #
+#    Updated: 2021/07/06 10:45:15 by ugo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,4 +115,4 @@ re: fclean newline all clean_objs
 newline:
 	@echo ""
 
-.PHONY: all clean_libft clean_objs clean fclean_exec fclean_libft fclean re_nolib re
+.PHONY: all clean_mlx clean_libft clean_objs clean fclean_exec fclean_libft fclean re_nolib re
